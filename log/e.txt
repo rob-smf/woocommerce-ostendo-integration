@@ -1,0 +1,812 @@
+Date: 2016-11-18
+API Endpoint: http://119.18.43.182:82/tabledata?tablename=X_GETWEBITEMSFREEQTY&apikey=Ytm1VIhM2ai7fewNDR1QpEypr6aoDFlGA5FEZLoasW3pSCVzaDkMhm7kayXBiASj2vsnQDomCd0%3D&format=json&configuration=0<br/>DRI-NT/BK-0 was imported successfully! 
+
+ERROR! ITEMCODE: DRI-NT/BK-1 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+DRI-NT/BK-2 was imported successfully! 
+
+DRI-NT/BK-3 was imported successfully! 
+
+DRI-NT/BK-4 was imported successfully! 
+
+DRI-NT/SH-0 was imported successfully! 
+
+DRI-NT/SH-1 was imported successfully! 
+
+DRI-NT/SH-2 was imported successfully! 
+
+DRI-NT/SH-3 was imported successfully! 
+
+DRI-NT/SH-4 was imported successfully! 
+
+DRI-NT/WT-0 was imported successfully! 
+
+DRI-NT/WT-1 was imported successfully! 
+
+DRI-NT/WT-2 was imported successfully! 
+
+DRI-NT/WT-3 was imported successfully! 
+
+DRI-NT/WT-4 was imported successfully! 
+
+HER-CH-0 was imported successfully! 
+
+HER-CH-1 was imported successfully! 
+
+HER-CH-2 was imported successfully! 
+
+HER-CH-3 was imported successfully! 
+
+HER-CH-4 was imported successfully! 
+
+HER-GR-0 was imported successfully! 
+
+ERROR! ITEMCODE: HER-GR-1 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+HER-GR-2 was imported successfully! 
+
+ERROR! ITEMCODE: HER-GR-3 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+HER-GR-4 was imported successfully! 
+
+HER-LS-0 was imported successfully! 
+
+HER-LS-1 was imported successfully! 
+
+HER-LS-2 was imported successfully! 
+
+HER-LS-3 was imported successfully! 
+
+HER-LS-4 was imported successfully! 
+
+ERROR! ITEMCODE: MAS-NT/GR-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: MAS-WT/CR-0 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: MAS-WT/CR-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-CE-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-CE-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-CE-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+NAW-CH-1 was imported successfully! 
+
+NAW-CH-2 was imported successfully! 
+
+NAW-CH-3 was imported successfully! 
+
+ERROR! ITEMCODE: NAW-CI-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-CI-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-CI-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-DK-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-DK-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-DK-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-RS-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-RS-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-RS-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-TG-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-TG-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NAW-TG-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+NES-CH-0 was imported successfully! 
+
+NES-CH-1 was imported successfully! 
+
+NES-CH-2 was imported successfully! 
+
+NES-CH-3 was imported successfully! 
+
+NES-CH-3.5 was imported successfully! 
+
+NES-CH-4 was imported successfully! 
+
+NES-NT-0 was imported successfully! 
+
+NES-NT-1 was imported successfully! 
+
+ERROR! ITEMCODE: NES-NT-2 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+NES-NT-3 was imported successfully! 
+
+NES-NT-3.5 was imported successfully! 
+
+ERROR! ITEMCODE: NES-NT-4 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+PEB-GR-0 was imported successfully! 
+
+ERROR! ITEMCODE: PEB-GR-1 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+PEB-GR-2 was imported successfully! 
+
+PEB-GR-3 was imported successfully! 
+
+ERROR! ITEMCODE: PEB-GR-4 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: MC01-PLT-SG-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+PEB-LS-0 was imported successfully! 
+
+PEB-LS-1 was imported successfully! 
+
+PEB-LS-2 was imported successfully! 
+
+PEB-LS-3 was imported successfully! 
+
+PEB-LS-4 was imported successfully! 
+
+ERROR! ITEMCODE: PEB-SH-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: RIT-NT/CR-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: RIT-NT/CR-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+RIT-NT/IN-0 was imported successfully! 
+
+RIT-NT/IN-1 was imported successfully! 
+
+RIT-NT/IN-2 was imported successfully! 
+
+ERROR! ITEMCODE: RIT-NT/IN-3 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+RIT-NT/IN-4 was imported successfully! 
+
+RIV-NT-0 was imported successfully! 
+
+RIV-NT-1 was imported successfully! 
+
+RIV-NT-2 was imported successfully! 
+
+RIV-NT-3 was imported successfully! 
+
+RIV-NT-4 was imported successfully! 
+
+ROP-CH/BK-0 was imported successfully! 
+
+ROP-CH/BK-1 was imported successfully! 
+
+ROP-CH/BK-2 was imported successfully! 
+
+ERROR! ITEMCODE: ROP-CH/BK-3 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ROP-CH/BK-4 was imported successfully! 
+
+ROP-NT/BK-0 was imported successfully! 
+
+ROP-NT/BK-1 was imported successfully! 
+
+ROP-NT/BK-2 was imported successfully! 
+
+ROP-NT/BK-3 was imported successfully! 
+
+ROP-NT/BK-4 was imported successfully! 
+
+ROP-NT/NT-0 was imported successfully! 
+
+ROP-NT/NT-1 was imported successfully! 
+
+ROP-NT/NT-2 was imported successfully! 
+
+ERROR! ITEMCODE: ROP-NT/NT-3 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ROP-NT/NT-4 was imported successfully! 
+
+SAH-CH-1 was imported successfully! 
+
+ERROR! ITEMCODE: MC01-PLT-SG-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+SAH-CH-2 was imported successfully! 
+
+SAH-CH-3 was imported successfully! 
+
+SAH-NT-1 was imported successfully! 
+
+SAH-NT-2 was imported successfully! 
+
+SAH-NT-3 was imported successfully! 
+
+ERROR! ITEMCODE: SER-CH/NT-0 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+SER-CH/NT-1 was imported successfully! 
+
+SER-CH/NT-2 was imported successfully! 
+
+ERROR! ITEMCODE: SER-CH/NT-3 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+SER-CH/NT-4 was imported successfully! 
+
+SER-CH/SH-0 was imported successfully! 
+
+SER-CH/SH-1 was imported successfully! 
+
+SER-CH/SH-2 was imported successfully! 
+
+SER-CH/SH-3 was imported successfully! 
+
+SER-CH/SH-4 was imported successfully! 
+
+SER-NT/IV-0 was imported successfully! 
+
+SER-NT/IV-1 was imported successfully! 
+
+ERROR! ITEMCODE: SER-NT/IV-2 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: SER-NT/IV-3 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+SER-NT/IV-4 was imported successfully! 
+
+ERROR! ITEMCODE: SIE-CK-2 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+SIE-CK-3 was imported successfully! 
+
+SIE-CK-3.5 was imported successfully! 
+
+SIE-PU-2 was imported successfully! 
+
+SIE-PU-3 was imported successfully! 
+
+SIE-PU-3.5 was imported successfully! 
+
+ERROR! ITEMCODE: SIE-SI-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: SIE-SI-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: SIE-SI-3.5 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: MC02-TUK-FU-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+TWI-CH-0 was imported successfully! 
+
+TWI-CH-1 was imported successfully! 
+
+TWI-CH-2 was imported successfully! 
+
+ERROR! ITEMCODE: MC02-TUK-FU-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+TWI-CH-3 was imported successfully! 
+
+TWI-CH-4 was imported successfully! 
+
+TWI-GR-0 was imported successfully! 
+
+TWI-GR-1 was imported successfully! 
+
+TWI-GR-2 was imported successfully! 
+
+TWI-GR-3 was imported successfully! 
+
+TWI-GR-4 was imported successfully! 
+
+TWI-TQ-0 was imported successfully! 
+
+TWI-TQ-1 was imported successfully! 
+
+TWI-TQ-2 was imported successfully! 
+
+TWI-TQ-3 was imported successfully! 
+
+TWI-TQ-4 was imported successfully! 
+
+ERROR! ITEMCODE: EM-FSA-CH-XS import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: EM-FSA-NT-XS import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: EM-NES-CH-L import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: EM-NES-CH-S import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: EM-NES-CH-XS import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+EM-NES-NT-L was imported successfully! 
+
+EM-NES-NT-S was imported successfully! 
+
+ERROR! ITEMCODE: EM-NES-NT-XS import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: EM-SAH-CH-L import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: EM-SAH-CH-S import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+EM-SAH-NT-L was imported successfully! 
+
+ERROR! ITEMCODE: EM-SAH-NT-S import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: EM-SER-CH/NT-L import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: EM-SER-CH/NT-S import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: EM-TER-NT-L import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: EM-TER-NT-S import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+DLN-NT-5 was imported successfully! 
+
+DLN-NT-7 was imported successfully! 
+
+DSY-NT-3 was imported successfully! 
+
+DSY-NT-5 was imported successfully! 
+
+ERROR! ITEMCODE: MC02-TUK-VI-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: GER-NT-6 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+MGL-NT-5 was imported successfully! 
+
+ERROR! ITEMCODE: ZIN-NTB/PW-5 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: ZIN-PWB/NT-5 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: DLN-PK-5 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: DSY-FC-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+DSY-SB-3 was imported successfully! 
+
+DSY-SB-5 was imported successfully! 
+
+ERROR! ITEMCODE: DSY-GU-5 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+PIN-BOB/NT-L was imported successfully! 
+
+PIN-NTB/CA-L was imported successfully! 
+
+ERROR! ITEMCODE: PIN-NTB/CL-S import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIN-WAB/NT-S import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: STC-FR/EL-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: STC-PI/RO-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: STC-PR/BS-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: STC-SK/BU-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: STC-TI/DO-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: CAR-CS-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: CAR-CS-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: CAR-CS-3.5 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: CAR-PE-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: CAR-PE-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NOM-FE-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NOM-FE-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NOM-FE-3.5 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NOM-PO-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NOM-PO-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-CQ-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-CQ-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-GR-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-GR-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-GR-3.5 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-PO-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-PO-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-PO-3.5 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-TL-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-TL-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+PM-WIL-NT-M was imported successfully! 
+
+TR-WIL-NT-M was imported successfully! 
+
+TT-ZIN-NT-M was imported successfully! 
+
+TT-ZIN-PW-M was imported successfully! 
+
+DNE-CO/LS-0 was imported successfully! 
+
+DNE-CO/LS-1 was imported successfully! 
+
+ERROR! ITEMCODE: MC02-TUK-VI-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: MC03-FLD-CO-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: MC03-FLD-CO-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: MC03-FLD-PI-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: MC03-FLD-PI-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+SIE-CK-1 was imported successfully! 
+
+DNE-AS/OA-0 was imported successfully! 
+
+DNE-AS/OA-1 was imported successfully! 
+
+HVS-GR/OA-0 was imported successfully! 
+
+HVS-GR/OA-1 was imported successfully! 
+
+HVS-SL/GR-0 was imported successfully! 
+
+HVS-SL/GR-1 was imported successfully! 
+
+SAF-OA/AS-0 was imported successfully! 
+
+SAF-OA/AS-1 was imported successfully! 
+
+SAF-GR/SL-0 was imported successfully! 
+
+SAF-GR/SL-1 was imported successfully! 
+
+DLN-NT-9 was imported successfully! 
+
+SIE-CH-3 was imported successfully! 
+
+SIE-CH-3.5 was imported successfully! 
+
+SIE-FF-1 was imported successfully! 
+
+SIE-FF-2 was imported successfully! 
+
+ZUL-NT/SH-2 was imported successfully! 
+
+SIE-SF-1 was imported successfully! 
+
+SIE-SF-2 was imported successfully! 
+
+ERROR! ITEMCODE: PET-NT-6 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+SIE-ML-1 was imported successfully! 
+
+SIE-ML-2 was imported successfully! 
+
+PET-NT-9 was imported successfully! 
+
+BAL-MU-1 was imported successfully! 
+
+BAL-MU-2 was imported successfully! 
+
+ERROR! ITEMCODE: JES-SC-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: JES-SC-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIN-NTB/RB-XL import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+PIN-NTB/NE-XL was imported successfully! 
+
+ERROR! ITEMCODE: PIN-PPB/NT-XL import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+DNE-CO/LS-2 was imported successfully! 
+
+DNE-CO/LS-3 was imported successfully! 
+
+DNE-AS/OA-2 was imported successfully! 
+
+DNE-AS/OA-3 was imported successfully! 
+
+HVS-GR/OA-2 was imported successfully! 
+
+HVS-GR/OA-3 was imported successfully! 
+
+HVS-SL/GR-2 was imported successfully! 
+
+HVS-SL/GR-3 was imported successfully! 
+
+SAF-OA/AS-2 was imported successfully! 
+
+SAF-OA/AS-3 was imported successfully! 
+
+SAF-GR/SL-2 was imported successfully! 
+
+SAF-GR/SL-3 was imported successfully! 
+
+ATL-NT-2 was imported successfully! 
+
+ATL-NT-3 was imported successfully! 
+
+ATL-NT-3.5 was imported successfully! 
+
+KAL-NT/PU-2 was imported successfully! 
+
+SIE-CH-2 was imported successfully! 
+
+KAL-NT/CK-0 was imported successfully! 
+
+KAL-NT/PU-0 was imported successfully! 
+
+DRI-NT/BK-3.5 was imported successfully! 
+
+DRI-NT/SH-3.5 was imported successfully! 
+
+SAV-NT-2 was imported successfully! 
+
+DRI-NT/WT-3.5 was imported successfully! 
+
+GAZ-NT/SL-2 was imported successfully! 
+
+TAN-LS-2 was imported successfully! 
+
+TAN-LS-3 was imported successfully! 
+
+ERROR! ITEMCODE: TAN-LS-3.5 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: GER-PW-6 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+CAM-NT-4 was imported successfully! 
+
+RIE-NT/PW-0 was imported successfully! 
+
+ERROR! ITEMCODE: RIE-NT/PW-3 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+RIE-NT/PW-1 was imported successfully! 
+
+RIE-NT/PW-2 was imported successfully! 
+
+RIE-NT/PW-4 was imported successfully! 
+
+KAL-NT/CK-1 was imported successfully! 
+
+KAL-NT/CK-2 was imported successfully! 
+
+KAL-NT/CK-3 was imported successfully! 
+
+KAL-NT/CK-4 was imported successfully! 
+
+ERROR! ITEMCODE: CAR-CS-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: MC01-PLT-CB-2 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: MC01-PLT-CB-3 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: CAR-PE-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: NOM-FE-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-GR-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-PO-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+ERROR! ITEMCODE: PIL-TL-1 import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
+KAL-NT/PU-1 was imported successfully! 
+
+SIE-PU-4 was imported successfully! 
+
+KAL-NT/PU-3 was imported successfully! 
+
+KAL-NT/PU-4 was imported successfully! 
+
+ATL-LS-2 was imported successfully! 
+
+ERROR! ITEMCODE: ATL-LS-3 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: ATL-LS-3.5 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+BAB-ST/GP-2.4 was imported successfully! 
+
+BAB-ST/GP-2.7 was imported successfully! 
+
+BAB-ST/BZ-2.4 was imported successfully! 
+
+BAB-ST/BZ-2.7 was imported successfully! 
+
+BRD-CH-6 was imported successfully! 
+
+BRD-CK-6 was imported successfully! 
+
+BRD-PU-6 was imported successfully! 
+
+DRI-NT/WT-0.8 was imported successfully! 
+
+FEZ-NT-2 was imported successfully! 
+
+FEZ-NT-3 was imported successfully! 
+
+FEZ-NT-3.5 was imported successfully! 
+
+GAZ-NT/SL-3 was imported successfully! 
+
+ERROR! ITEMCODE: GAZ-NT/SL-3.5 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+KAL-PW/CH-2 was imported successfully! 
+
+KAL-PW/CH-3 was imported successfully! 
+
+KAL-PW/CH-4 was imported successfully! 
+
+LEI-OP/IV-2.4 was imported successfully! 
+
+LEI-OP/IV-2.7 was imported successfully! 
+
+LEI-GP/ST-2.4 was imported successfully! 
+
+LEI-GP/ST-2.7 was imported successfully! 
+
+MED-IV/OP-2.4 was imported successfully! 
+
+MED-IV/OP-2.7 was imported successfully! 
+
+MED-ST/GP-2.4 was imported successfully! 
+
+MED-ST/GP-2.7 was imported successfully! 
+
+NES-NT-0.8 was imported successfully! 
+
+SAV-NT-3 was imported successfully! 
+
+SAV-NT-3.5 was imported successfully! 
+
+SER-CH/NT-0.8 was imported successfully! 
+
+SHE-CH-2 was imported successfully! 
+
+SHE-CH-3 was imported successfully! 
+
+SHE-CH-3.5 was imported successfully! 
+
+ERROR! ITEMCODE: SHE-CH-4 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+SHE-PU-2 was imported successfully! 
+
+ERROR! ITEMCODE: SHE-PU-3 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: SHE-PU-3.5 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+SHE-PU-4 was imported successfully! 
+
+SHE-SA-2 was imported successfully! 
+
+SHE-SA-3 was imported successfully! 
+
+SHE-SA-3.5 was imported successfully! 
+
+SHE-SA-4 was imported successfully! 
+
+ZUL-NT/SH-3 was imported successfully! 
+
+ERROR! ITEMCODE: ZUL-NT/SH-3.5 import failed. 
+ CAUSE: FREEQTY was less than 0.
+
+ERROR! ITEMCODE: TERRACE-SALE import failed. 
+ CAUSE: ITEMCODE does not exist on website.
+
