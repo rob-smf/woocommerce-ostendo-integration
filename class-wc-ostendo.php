@@ -16,13 +16,13 @@ class WC_Integration_Ostendo_Integration extends WC_Integration {
 		global $woocommerce;
 		$this->id                 = 'integration-ostendo';
 		$this->method_title       = __( 'Ostendo', 'woocommerce-integration-ostendo' );
-		$this->method_description = __( 'Integrate with Ostendo.', 'woocommerce-integration-ostendo' );
+		$this->method_description = __( 'Options to integrate Woocommerce with Ostendo.', 'woocommerce-integration-ostendo' );
 		// Load the settings.
 		$this->init_form_fields();
 		$this->init_settings();
 		// Define user set variables.
-		$this->enable_ostendo_import			  = $this->get_option( 'enable_ostendo_import' );
-		$this->api_endpoint			  			  = $this->get_option( 'api_endpoint' );
+		//$this->enable_ostendo_import			  = $this->get_option( 'enable_ostendo_import' );
+		//$this->api_endpoint			  			  = $this->get_option( 'api_endpoint' );
         $this->enable_ostendo_sales_order         = $this->get_option( 'enable_ostendo_sales_order' );
 		$this->email_recipient        			  = $this->get_option( 'email_recipient' );
         $this->email_subject          			  = $this->get_option( 'email_subject' );

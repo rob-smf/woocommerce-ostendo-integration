@@ -58,7 +58,7 @@ class WC_Integration_Ostendo {
 $WC_Integration_Ostendo = new WC_Integration_Ostendo( __FILE__ );
 
 
-add_action('woocommerce_payment_complete', 'ostendo_email');
+
 
 /**
 *  Takes and order ID from woocommerce and puts together
@@ -68,7 +68,7 @@ add_action('woocommerce_payment_complete', 'ostendo_email');
 function ostendo_email($order_id){
 
 	// Get config fields
-	$ostendoData = get_ostendo_data();
+	$ostendoData = get_option('woocommerce_integration-ostendo_settings');
 
 	// Make sure the outgoing sales order is enabled
 	if ( $ostendoData['enable_ostendo_sales_order'] == 'yes' ) :
@@ -172,29 +172,43 @@ function ostendo_email($order_id){
 	endif;
 }
 
+add_action('woocommerce_payment_complete', 'ostendo_email');
 /**
 *  Hits the API endpoint specified in Ostendo config,
 *  travels through response and updates stock quantities
 */
 
-add_action('init', 'ostendo_import');
+
 function ostendo_import(){
 
 	// Get config fields
-	$ostendoData = get_ostendo_data();
+	$ostendoData = get_option('woocommerce_integration-ostendo_settings');
 
 	// Make sure it's enabled
 	if ( $ostendoData['enable_ostendo_import'] == 'yes' ):
 
 		// Clean up URL, set up timestamp and log
 		$url = htmlspecialchars_decode($ostendoData['api_endpoint']);
-		$timestamp = "Date: ".date('Y-m-d')."\nAPI Endpoint: ".$url."<br/>";
+		$timestamp = "Date: ".date('Y-m-d H:i:s')."\nAPI Endpoint: ".$url."\n";
 		$log = '';
+		$success = 0;
+		$qty_failure = 0;
+		$int_failure = 0;
+		$sku_failure = 0;
+
+		//get any manually mapped ostendo skus
+		$exceptions = [];
+		$rows = get_field('mappedskus','options');
+
+		foreach($rows as $row){
+			$ostendoSKU = $row['ostendo_sku'];
+			$siteSKU = $row['site_sku'];
+
+			$exceptions[$ostendoSKU] = $siteSKU;
+		}
 
 		// Start call
 		$ch = curl_init();
-		// Disable SSL verification
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		// Will return the response
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		// Set the url
@@ -205,46 +219,100 @@ function ostendo_import(){
 		// Decode the response and turn into assoc. array
 		$data = json_decode($result, true);
 
+		if (is_array($data)){
 		// Start walking
-		foreach($data as $item){
+			foreach($data as $item){
 
-			$rug = $item['ITEMCODE'];
-			$newQTY = $item['FREEQTY'];
-			$rugID = wc_get_product_id_by_sku($rug);
+				$rug = $item['ITEMCODE'];
+				$newQTY = $item['FREEQTY'];
+				$rugID = wc_get_product_id_by_sku($rug);
 
-			// Make sure the item code exists, will return 0 if it doesn't
-			if ( $rugID != 0 ){
-				// Make sure ostendo didn't send a negative quantity
-				if ( $newQTY > -1 ){
-					// turn quantity from integer to string and update
-					$strnewQTY = (string)$newQTY;
-					update_post_meta($rugID, '_stock', $strnewQTY);
-					$log .= $rug." was imported successfully! \n\n";
+				// Make sure the item code exists, will return 0 if it doesn't, then check manually mapped SKUs
+				if ( $rugID != 0 ){
+					// Make sure quantity is an integer
+					if ( is_int( $newQTY ) ){
+						// Make sure ostendo didn't send a negative quantity
+						if ( $newQTY > -1 ){
+							// turn quantity from integer to string and update
+							$strnewQTY = (string)$newQTY;
+							$backorders = get_post_meta($rugID, '_backorders', 1);
+							update_post_meta($rugID, '_stock', $strnewQTY);
+							//$log .= $rug." was imported successfully!\n\n";
+							$success++;
+
+							if ( ( $newQTY = 0 ) && ( $backorders = 'no' )) {
+								update_post_meta($rugID, '_stock_status', 'outofstock');
+							} elseif ( $newQTY > 0 ){
+								update_post_meta($rugID, '_stock_status', 'instock');
+							}
+						} else {
+							update_post_meta($rugID, '_stock', '0');
+							//$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: FREEQTY was less than 0. Product Stock set to 0 instead.\n\n";
+							$qty_failure++;
+						}
+					} else {
+						//$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: FREEQTY was not an integer.\n\n";
+						$int_failure++;
+					}
+				} elseif( array_key_exists($rug, $exceptions) ){
+
+					$new_id = $exceptions[$rug];
+					$new_prod = wc_get_product_id_by_sku($new_id);
+					$new_amount = (string)$newQTY;
+					$backorder = get_post_meta($new_id, '_backorders', 1);
+
+					if ( ($newQTY <= 0) && ($backorder = 'no' ) ){
+
+						update_post_meta($new_id, '_stock', '0');
+						update_post_meta($new_id, '_stock_status', 'outofstock');
+
+					} elseif ( ($newQTY <= 0) && ($backorder = 'yes' ) ) {
+
+						update_post_meta($new_id, '_stock', '0');
+						update_post_meta($new_id, '_stock_status', 'instock');
+
+					} elseif ($newQTY > 0){
+
+						update_post_meta($new_prod, '_stock', $new_amount);
+						update_post_meta($new_prod, '_stock_status', 'instock');
+
+					}
 
 				} else {
-					$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: FREEQTY was less than 0.\n\n";
+					$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: ITEMCODE does not exist on website and was not mapped.\n\n";
+					$sku_failure++;
 				}
-			} else {
-				$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: ITEMCODE does not exist on website.\n\n";
 			}
+			//$items_processed = $success." items successfully imported.\n"
+			//				   .$qty_failure." failed import because FREEQTY was less than 0. Product Stock was set to 0 instead.\n"
+			//				   .$int_failure." failed import because FREEQTY was not an integer.\n"
+			//				   .$sku_failure." failed because SKU does not exist on site.\n\n";
+		} else {
+			$items_processed = "Issue with API endpoint caused 0 items to be imported. Please verify URL is correct.\n";
 		}
-
 		// Delete old log, write new log with timestamp and errors
 		$plugin_path = __DIR__;
 		unlink($plugin_path.'/log/e.txt');
 		$filelog = fopen($plugin_path.'/log/e.txt', 'w');
-		fwrite($filelog, $timestamp.$log);
+		fwrite($filelog, $timestamp.$items_processed.$log);
 		fclose($filelog);
 
+	do_action('ostendo_import');
 	endif;
 }
 
-// Grabs field values from the WC Ostendo Integration settings
-function get_ostendo_data(){
-	$ostendoData = get_option('woocommerce_integration-ostendo_settings');
-	return $ostendoData;
-}
+add_action('import_ostendo_stock', 'ostendo_import');
+add_action( 'admin_menu', 'my_plugin_menu' );
 
+function my_plugin_menu() {
+	add_options_page(
+		'My Options',
+		'My Plugin',
+		'manage_options',
+		'my-plugin.php'
+	//	'my_plugin_page'
+	);
+}
 // Swaps out country codes to names
 function countryCodeToName($code) {
     switch ($code) {
