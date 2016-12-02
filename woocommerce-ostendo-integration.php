@@ -78,6 +78,17 @@ function ostendo_email($order_id){
 	    $products = $order->get_items();
 		$output = [];
 
+		// Get manually mapped skus
+		$exceptions = [];
+		$rows = get_field('mappedskus','options');
+
+		foreach($rows as $row){
+			$ostendo_sku = $row['ostendo_sku'];
+			$site_sku = $row['site_sku'];
+
+			$exceptions[$site_sku] = $ostendo_sku;
+		}
+
 		// Put together associative array with our data
 		$output['ORDERNO'] = $order->get_order_number();
 		$output['ORDERDATE'] = date('m/d/Y', strtotime($order->order_date));
@@ -133,7 +144,7 @@ function ostendo_email($order_id){
 			// Get product sku then set up array of product data for XML
 			$sku = $prodCode->get_sku();
 
-			$items['PRODUCTCODE'] = $sku;
+			$items['PRODUCTCODE'] = array_key_exists($sku, $exceptions) ? $exceptions[$sku] : $sku;
 			$items['PRODUCTDESC'] = $product['name'];
 			$items['QUANTITY'] = $product['qty'];
 			$items['UNITPRICE'] = number_format($product['line_subtotal'] / $product['qty'], 2, '.', '');
@@ -201,10 +212,10 @@ function ostendo_import(){
 		$rows = get_field('mappedskus','options');
 
 		foreach($rows as $row){
-			$ostendoSKU = $row['ostendo_sku'];
-			$siteSKU = $row['site_sku'];
+			$ostendo_sku = $row['ostendo_sku'];
+			$site_sku = $row['site_sku'];
 
-			$exceptions[$ostendoSKU] = $siteSKU;
+			$exceptions[$ostendo_sku] = $site_sku;
 		}
 
 		// Start call
@@ -224,69 +235,60 @@ function ostendo_import(){
 			foreach($data as $item){
 
 				$rug = $item['ITEMCODE'];
-				$newQTY = $item['FREEQTY'];
-				$rugID = wc_get_product_id_by_sku($rug);
+				$new_qty = $item['FREEQTY'];
+				$str_new_qty = (string)$new_qty;
+				$rug_id = wc_get_product_id_by_sku($rug);
 
 				// Make sure the item code exists, will return 0 if it doesn't, then check manually mapped SKUs
-				if ( $rugID != 0 ){
-					// Make sure quantity is an integer
-					if ( is_int( $newQTY ) ){
-						// Make sure ostendo didn't send a negative quantity
-						if ( $newQTY > -1 ){
-							// turn quantity from integer to string and update
-							$strnewQTY = (string)$newQTY;
-							$backorders = get_post_meta($rugID, '_backorders', 1);
-							update_post_meta($rugID, '_stock', $strnewQTY);
-							//$log .= $rug." was imported successfully!\n\n";
-							$success++;
+				if ( $rug_id != 0 ){
 
-							if ( ( $newQTY = 0 ) && ( $backorders = 'no' )) {
-								update_post_meta($rugID, '_stock_status', 'outofstock');
-							} elseif ( $newQTY > 0 ){
-								update_post_meta($rugID, '_stock_status', 'instock');
-							}
-						} else {
-							update_post_meta($rugID, '_stock', '0');
-							//$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: FREEQTY was less than 0. Product Stock set to 0 instead.\n\n";
-							$qty_failure++;
+					$backorders = get_post_meta($rug_id, '_backorders', 1);
+					// If less than 0, change stock to 0, then change stock status depending on backorder
+					if ($new_qty <= 0){
+
+						update_post_meta($rug_id, '_stock', '0');
+
+						if ($backorders = 'no' ){
+							update_post_meta($rug_id, '_stock_status', 'outofstock');
+						} elseif ( ($backorders = 'notify') || ($backorders = 'yes') ){
+							update_post_meta($rug_id, '_stock_status', 'instock');
 						}
-					} else {
-						//$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: FREEQTY was not an integer.\n\n";
-						$int_failure++;
+					// Above 0, update with new quantity
+					} elseif ($new_qty > 0){
+
+						update_post_meta($rug_id, '_stock', $str_new_qty);
+						update_post_meta($rug_id, '_stock_status', 'instock');
+
 					}
-				} elseif( array_key_exists($rug, $exceptions) ){
+
+				} elseif ( array_key_exists($rug, $exceptions) ){
 
 					$new_id = $exceptions[$rug];
 					$new_prod = wc_get_product_id_by_sku($new_id);
-					$new_amount = (string)$newQTY;
 					$backorder = get_post_meta($new_id, '_backorders', 1);
 
-					if ( ($newQTY <= 0) && ($backorder = 'no' ) ){
+					if ($new_qty <= 0){
 
-						update_post_meta($new_id, '_stock', '0');
-						update_post_meta($new_id, '_stock_status', 'outofstock');
+						update_post_meta($new_prod, '_stock', '0');
 
-					} elseif ( ($newQTY <= 0) && ($backorder = 'yes' ) ) {
+						if ($backorder = 'no'){
+							update_post_meta($new_prod, '_stock_status', 'outofstock');
+						} elseif ($backorder = 'notify' || 'yes'){
+							update_post_meta($new_prod, '_stock_status', 'instock');
+						}
 
-						update_post_meta($new_id, '_stock', '0');
-						update_post_meta($new_id, '_stock_status', 'instock');
+					} elseif ($new_qty > 0){
 
-					} elseif ($newQTY > 0){
-
-						update_post_meta($new_prod, '_stock', $new_amount);
+						update_post_meta($new_prod, '_stock', $str_new_qty);
 						update_post_meta($new_prod, '_stock_status', 'instock');
 
 					}
 
 				} else {
-					$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: ITEMCODE does not exist on website and was not mapped.\n\n";
+					$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: ITEMCODE does not exist on website and was not manually mapped.\n\n";
 					$sku_failure++;
 				}
 			}
-			//$items_processed = $success." items successfully imported.\n"
-			//				   .$qty_failure." failed import because FREEQTY was less than 0. Product Stock was set to 0 instead.\n"
-			//				   .$int_failure." failed import because FREEQTY was not an integer.\n"
-			//				   .$sku_failure." failed because SKU does not exist on site.\n\n";
 		} else {
 			$items_processed = "Issue with API endpoint caused 0 items to be imported. Please verify URL is correct.\n";
 		}
@@ -297,22 +299,11 @@ function ostendo_import(){
 		fwrite($filelog, $timestamp.$items_processed.$log);
 		fclose($filelog);
 
-	do_action('ostendo_import');
 	endif;
 }
 
 add_action('import_ostendo_stock', 'ostendo_import');
-add_action( 'admin_menu', 'my_plugin_menu' );
 
-function my_plugin_menu() {
-	add_options_page(
-		'My Options',
-		'My Plugin',
-		'manage_options',
-		'my-plugin.php'
-	//	'my_plugin_page'
-	);
-}
 // Swaps out country codes to names
 function countryCodeToName($code) {
     switch ($code) {
