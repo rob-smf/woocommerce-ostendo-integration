@@ -78,17 +78,6 @@ function ostendo_email($order_id){
 	    $products = $order->get_items();
 		$output = [];
 
-		// Get manually mapped skus
-		$exceptions = [];
-		$rows = get_field('mappedskus','options');
-
-		foreach($rows as $row){
-			$ostendo_sku = $row['ostendo_sku'];
-			$site_sku = $row['site_sku'];
-
-			$exceptions[$site_sku] = $ostendo_sku;
-		}
-
 		// Put together associative array with our data
 		$output['ORDERNO'] = $order->get_order_number();
 		$output['ORDERDATE'] = date('m/d/Y', strtotime($order->order_date));
@@ -144,7 +133,7 @@ function ostendo_email($order_id){
 			// Get product sku then set up array of product data for XML
 			$sku = $prodCode->get_sku();
 
-			$items['PRODUCTCODE'] = array_key_exists($sku, $exceptions) ? $exceptions[$sku] : $sku;
+			$items['PRODUCTCODE'] = $sku;
 			$items['PRODUCTDESC'] = $product['name'];
 			$items['QUANTITY'] = $product['qty'];
 			$items['UNITPRICE'] = number_format($product['line_subtotal'] / $product['qty'], 2, '.', '');
@@ -203,20 +192,8 @@ function ostendo_import(){
 		$timestamp = "Date: ".date('Y-m-d H:i:s')."\nAPI Endpoint: ".$url."\n";
 		$log = '';
 		$success = 0;
-		$qty_failure = 0;
 		$int_failure = 0;
 		$sku_failure = 0;
-
-		//get any manually mapped ostendo skus
-		$exceptions = [];
-		$rows = get_field('mappedskus','options');
-
-		foreach($rows as $row){
-			$ostendo_sku = $row['ostendo_sku'];
-			$site_sku = $row['site_sku'];
-
-			$exceptions[$ostendo_sku] = $site_sku;
-		}
 
 		// Start call
 		$ch = curl_init();
@@ -249,55 +226,58 @@ function ostendo_import(){
 						update_post_meta($rug_id, '_stock', '0');
 
 						if ($backorders = 'no' ){
+
 							update_post_meta($rug_id, '_stock_status', 'outofstock');
+							$log .= "ITEMCODE: ".$rug." imported successfully. Stock updated to 0. \n\n";
+							$success++;
+
 						} elseif ( ($backorders = 'notify') || ($backorders = 'yes') ){
+
 							update_post_meta($rug_id, '_stock_status', 'instock');
+							$log .= "ITEMCODE: ".$rug." imported successfully. Stock updated to 0. \n\n";
+							$success++;
+
 						}
 					// Above 0, update with new quantity
 					} elseif ($new_qty > 0){
 
 						update_post_meta($rug_id, '_stock', $str_new_qty);
 						update_post_meta($rug_id, '_stock_status', 'instock');
+						$log .= "ITEMCODE: ".$rug." imported successfully. Stock updated to ".$new_qty.".\n\n";
+						$success++;
 
-					}
-
-				} elseif ( array_key_exists($rug, $exceptions) ){
-
-					$new_id = $exceptions[$rug];
-					$new_prod = wc_get_product_id_by_sku($new_id);
-					$backorder = get_post_meta($new_id, '_backorders', 1);
-
-					if ($new_qty <= 0){
-
-						update_post_meta($new_prod, '_stock', '0');
-
-						if ($backorder = 'no'){
-							update_post_meta($new_prod, '_stock_status', 'outofstock');
-						} elseif ($backorder = 'notify' || 'yes'){
-							update_post_meta($new_prod, '_stock_status', 'instock');
-						}
-
-					} elseif ($new_qty > 0){
-
-						update_post_meta($new_prod, '_stock', $str_new_qty);
-						update_post_meta($new_prod, '_stock_status', 'instock');
-
+					} else {
+						$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: FREEQTY was not an integer.\n\n";
+						$int_failure++;
 					}
 
 				} else {
-					$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: ITEMCODE does not exist on website and was not manually mapped.\n\n";
+					$log .= "ERROR! ITEMCODE: ".$rug." import failed. \nCAUSE: ITEMCODE does not exist on website.\n\n";
 					$sku_failure++;
 				}
 			}
+			$items_processed = $success." items successfully imported.\n"
+								.$int_failure." failed import because FREEQTY was not an integer.\n"
+								.$sku_failure." failed imported because SKU does not exist on site.\n\n";
 		} else {
-			$items_processed = "Issue with API endpoint caused 0 items to be imported. Please verify URL is correct.\n";
+			$items_processed = "Issue with API endpoint caused 0 items to be imported. Please verify URL is correct and is not timing out.\n";
 		}
+
 		// Delete old log, write new log with timestamp and errors
 		$plugin_path = __DIR__;
 		unlink($plugin_path.'/log/e.txt');
 		$filelog = fopen($plugin_path.'/log/e.txt', 'w');
 		fwrite($filelog, $timestamp.$items_processed.$log);
 		fclose($filelog);
+
+		$recipient = $ostendoData['log_recipient'];
+		$subject = "Ostendo Import: " . date('Y-m-d H:i:s');
+		$message = "Ostendo import completed: " . date('Y-m-d H:i:s');
+		$headers = 'From: info@armadillo-co.com<info@armadillo-co.com>'."\r\n".
+		'Reply-To: test@test.com'."\r\n" .
+		'X-Mailer: PHP/' . phpversion();
+
+	    wp_mail($recipient, $subject, $message, $headers, array($plugin_path.'/log/e.txt'));
 
 	endif;
 }

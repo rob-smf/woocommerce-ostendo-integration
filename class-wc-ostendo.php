@@ -21,8 +21,9 @@ class WC_Integration_Ostendo_Integration extends WC_Integration {
 		$this->init_form_fields();
 		$this->init_settings();
 		// Define user set variables.
-		//$this->enable_ostendo_import			  = $this->get_option( 'enable_ostendo_import' );
-		//$this->api_endpoint			  			  = $this->get_option( 'api_endpoint' );
+		$this->enable_ostendo_import			  = $this->get_option( 'enable_ostendo_import' );
+		$this->api_endpoint			  			  = $this->get_option( 'api_endpoint' );
+		$this->log_recipient					  = $this->get_option( 'log_recipient' );
         $this->enable_ostendo_sales_order         = $this->get_option( 'enable_ostendo_sales_order' );
 		$this->email_recipient        			  = $this->get_option( 'email_recipient' );
         $this->email_subject          			  = $this->get_option( 'email_subject' );
@@ -50,6 +51,13 @@ class WC_Integration_Ostendo_Integration extends WC_Integration {
 				'desc_tip'          => true,
 				'default'           => ''
 			),
+			'log_recipient' => array(
+				'title'             => __( 'Log Recipient', 'woocommerce-integration-ostendo' ),
+				'type'              => 'text',
+				'description'       => __( 'Please enter email addresses for recipients of the import log. Use commas to separate multiple recipients.', 'woocommerce-integration-ostendo' ),
+				'desc_tip'          => true,
+				'default'           => ''
+			),
 			'enable_ostendo_sales_order' => array(
                 'title'             => __( 'Enable Sales Orders', 'woocommerce-integration-ostendo' ),
 				'type'              => 'checkbox',
@@ -61,7 +69,7 @@ class WC_Integration_Ostendo_Integration extends WC_Integration {
 			'email_recipient' => array(
 				'title'             => __( 'Email Recipient', 'woocommerce-integration-ostendo' ),
 				'type'              => 'text',
-				'description'       => __( 'Please enter the email address that should receive the XML file.', 'woocommerce-integration-ostendo' ),
+				'description'       => __( 'Please enter the email address that should receive the XML file. Use commas to separate multiple recipients.', 'woocommerce-integration-ostendo' ),
 				'desc_tip'          => true,
 				'default'           => ''
 			),
