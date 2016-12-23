@@ -160,7 +160,11 @@ function ostendo_email($order_id){
 		fclose($outfile);
 
 		// Send XML to with email data specified in Ostendo config.
-		$recipient = $ostendoData['email_recipient'];
+		if (($order->order_currency == 'USD') && (( $order->shipping_country == 'CA' ) || ( $order->shipping_country == 'MX') || ( $order->shipping_country == 'US'))){
+			$recipient = $ostendoData['us_email_recipient'];
+		} else {
+			$recipient = $ostendoData['email_recipient'];
+		}
 		$subject = $ostendoData['email_subject'];
 		$message = $ostendoData['email_message'];
 		$headers = 'From: info@armadillo-co.com<info@armadillo-co.com>'."\r\n".

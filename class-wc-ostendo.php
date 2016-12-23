@@ -25,6 +25,7 @@ class WC_Integration_Ostendo_Integration extends WC_Integration {
 		$this->api_endpoint			  			  = $this->get_option( 'api_endpoint' );
 		$this->log_recipient					  = $this->get_option( 'log_recipient' );
         $this->enable_ostendo_sales_order         = $this->get_option( 'enable_ostendo_sales_order' );
+		$this->us_email_recipient				  = $this->get_option( 'us_email_recipient');
 		$this->email_recipient        			  = $this->get_option( 'email_recipient' );
         $this->email_subject          			  = $this->get_option( 'email_subject' );
         $this->email_message          			  = $this->get_option( 'email_message' );
@@ -66,10 +67,17 @@ class WC_Integration_Ostendo_Integration extends WC_Integration {
 				'desc_tip'          => true,
 				'default'           => 'no',
             ),
-			'email_recipient' => array(
-				'title'             => __( 'Email Recipient', 'woocommerce-integration-ostendo' ),
+			'us_email_recipient' => array(
+				'title'             => __( 'US Email Recipient', 'woocommerce-integration-ostendo' ),
 				'type'              => 'text',
-				'description'       => __( 'Please enter the email address that should receive the XML file. Use commas to separate multiple recipients.', 'woocommerce-integration-ostendo' ),
+				'description'       => __( 'Please enter the email address that should receive the XML file for US orders. Use commas to separate multiple recipients.', 'woocommerce-integration-ostendo' ),
+				'desc_tip'          => true,
+				'default'           => ''
+			),
+			'email_recipient' => array(
+				'title'             => __( 'Intl. Email Recipient', 'woocommerce-integration-ostendo' ),
+				'type'              => 'text',
+				'description'       => __( 'Please enter the email address that should receive the XML file for International orders. Use commas to separate multiple recipients.', 'woocommerce-integration-ostendo' ),
 				'desc_tip'          => true,
 				'default'           => ''
 			),
