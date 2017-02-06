@@ -84,6 +84,7 @@ function ostendo_email($order_id){
 		$output['SUBTOTAL'] = number_format($order->get_subtotal(), 2, '.', '');
 		$output['FREIGHT'] = number_format($order->get_total_shipping(), 2, '.', '');
 		$output['TOTAL'] = number_format($order->order_total, 2, '.', '');
+        $output['CURRENCY'] = $order->order_currency;
 		$output['PAYMENTMETHOD'] = $order->payment_method_title;
 		$output['NOTE'] = $order->customer_message;
 		$output['EMAIL'] = $order->billing_email;
@@ -160,11 +161,7 @@ function ostendo_email($order_id){
 		fclose($outfile);
 
 		// Send XML to with email data specified in Ostendo config.
-		if (($order->order_currency == 'USD') && (( $order->shipping_country == 'CA' ) || ( $order->shipping_country == 'MX') || ( $order->shipping_country == 'US'))){
-			$recipient = $ostendoData['us_email_recipient'];
-		} else {
-			$recipient = $ostendoData['email_recipient'];
-		}
+		$recipient = $ostendoData['email_recipient'];
 		$subject = $ostendoData['email_subject'];
 		$message = $ostendoData['email_message'];
 		$headers = 'From: info@armadillo-co.com<info@armadillo-co.com>'."\r\n".
@@ -229,13 +226,13 @@ function ostendo_import(){
 
 						update_post_meta($rug_id, '_stock', '0');
 
-						if ($backorders = 'no' ){
+						if ($backorders == 'no' ){
 
 							update_post_meta($rug_id, '_stock_status', 'outofstock');
 							$log .= "ITEMCODE: ".$rug." imported successfully. Stock updated to 0. \n\n";
 							$success++;
 
-						} elseif ( ($backorders = 'notify') || ($backorders = 'yes') ){
+						} elseif ( ($backorders == 'notify') || ($backorders == 'yes') ){
 
 							update_post_meta($rug_id, '_stock_status', 'instock');
 							$log .= "ITEMCODE: ".$rug." imported successfully. Stock updated to 0. \n\n";
